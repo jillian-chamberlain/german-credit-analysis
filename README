@@ -26,7 +26,7 @@ The analysis follows a structured machine learning workflow: data exploration, p
 ## Key Findings
 
 ### 1. Classification Tree — Key Predictors of Home Ownership
-![Classification Tree](https://raw.githubusercontent.com/jillian-chamberlain/german-credit-analysis/master/images/Figure_2.png)
+![Classification Tree](https://raw.githubusercontent.com/jillian-chamberlain/german-credit-analysis/main/images/Figure_2.png)
 
 The classification tree identified **rental status (RENT)** and **unknown property status (PROP_UNKN_)** as the two most important predictors of home ownership.
 
@@ -39,7 +39,7 @@ The classification tree identified **rental status (RENT)** and **unknown proper
 ---
 
 ### 2. Logistic Regression — Cumulative Gains Chart
-![Cumulative Gains Chart](https://raw.githubusercontent.com/jillian-chamberlain/german-credit-analysis/master/images/Figure_1.png)
+![Cumulative Gains Chart](https://raw.githubusercontent.com/jillian-chamberlain/german-credit-analysis/main/images/Figure_1.png)
 
 The cumulative gains chart compares the logistic regression model's performance against a random baseline (dashed line). The solid line sitting above the baseline indicates the model has meaningful predictive lift, particularly in the early portions of the ranked population.
 
