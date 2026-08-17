@@ -1,19 +1,85 @@
 # German Credit Analysis
 
-## Project Overview
-This project analyzes German credit scores to determine whether the applicant will make a good or bad credit risk. Goals of this project include:
-1. Run 5 data exploration functions
-2. Partition into training and validation sets
-3. Run Logistic regression
-4. Create visualizations
+A statistical and machine learning analysis using the German Credit dataset to predict residential ownership status among loan applicants. This project applies logistic regression and classification tree methods to identify key factors that distinguish home owners from renters, with the goal of informing credit risk assessment.
 
-## Tools Used
-- R (ggplot2, lattice, caret, gains, rpart, rpart.plot)
-- R Studio
+---
+
+## Project Overview
+
+This project explores what applicant characteristics are most predictive of residential ownership status using a well-known German credit scoring dataset. Two modeling approaches were used and compared:
+
+- **Logistic Regression** — to model the probability of home ownership and evaluate predictive lift
+- **Classification Tree** — to identify the most important decision rules that separate owners from renters
+
+The analysis follows a structured machine learning workflow: data exploration, partitioning into training and validation sets, model building, and evaluation.
+
+---
+
+## Tools & Technologies
+
+- **R** (glm, rpart, rpart.plot, gains, caret, lattice, ggplot2)
+- **RMarkdown** for reproducible analysis
+- **GitHub** for version control
+
+---
+
+## Key Findings
+
+### 1. Classification Tree — Key Predictors of Home Ownership
+![Classification Tree](https://raw.githubusercontent.com/jillian-chamberlain/german-credit-analysis/master/images/Figure_2.png)
+
+The classification tree identified **rental status (RENT)** and **unknown property status (PROP_UNKN_)** as the two most important predictors of home ownership.
+
+- Applicants who **rent** were almost uniformly predicted **not** to own a residence (111 correct, 0 misclassified in that branch)
+- Among non-renters, those with **unknown property status** were largely predicted to own a residence (415 correct out of 427 in that branch)
+- This suggests that rental status alone is a strong and reliable signal for non-ownership, while property information adds meaningful distinction among the remaining applicants
+
+**Takeaway:** A simple two-variable decision rule captures a large portion of the variation in home ownership status, which could inform efficient screening in credit applications.
+
+---
+
+### 2. Logistic Regression — Cumulative Gains Chart
+![Cumulative Gains Chart](https://raw.githubusercontent.com/jillian-chamberlain/german-credit-analysis/master/images/Figure_1.png)
+
+The cumulative gains chart compares the logistic regression model's performance against a random baseline (dashed line). The solid line sitting above the baseline indicates the model has meaningful predictive lift, particularly in the early portions of the ranked population.
+
+- The model captures a large share of actual home owners by the time it has scored roughly 60-70% of the population
+- The curve flattens toward the end as the remaining applicants become harder to distinguish
+
+**Takeaway:** The logistic regression model performs better than chance at identifying home owners, demonstrating that the available credit applicant features contain useful signal for predicting residential status.
+
+---
 
 ## Project Structure
 
-data/: Contains datasets.
-scripts/: R scripts for analysis.
-images/: Visualizations.
-results/: Summary outputs.
+```
+german-credit-analysis/
+├── data/               # Source dataset (GermanCredit.csv)
+├── scripts/            # R Markdown analysis file
+├── images/             # Output visualizations
+│   ├── Figure_1.png    # Cumulative gains chart (logistic regression)
+│   └── Figure_2.png    # Classification tree
+├── results/            # Summary outputs
+└── README.md
+```
+
+---
+
+## How to Run
+
+1. Clone the repository
+   ```bash
+   git clone https://github.com/jillian-chamberlain/german-credit-analysis.git
+   ```
+2. Open the R Markdown file in RStudio
+3. Install required packages if needed
+   ```r
+   install.packages(c("ggplot2", "lattice", "caret", "gains", "rpart", "rpart.plot"))
+   ```
+4. Knit or run the R Markdown file to reproduce the analysis
+
+---
+
+## About
+
+This project was completed as part of a Master's in Data Analytics program, applying supervised machine learning techniques to a real-world credit scoring dataset. It reflects a structured approach to binary classification problems including data exploration, train/validation partitioning, model fitting, and evaluation using visual diagnostic tools.
